@@ -11,11 +11,28 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r problem 1 chunk 1}
 library(tidyverse)
 
-##create dataframe with 4 variables# 
+##create dataframe containing 4 variables# 
 
 hw1_df = tibble(
-  samp = rnorm(8),
-  vec_logical = c(samp > 0),
+  norm_samp = rnorm(8),
+  vec_logical = norm_samp > 0,
   vec_char = c("apple", "banana","kiwi", "orange", "peach", "cherry", "lime", "lemon"),
-  vec_factor = factor(c("one", "one", "two", "two", "three", "three" "three"))
+  vec_factor = factor(c("one", "one", "two", "two","two", "three", "three", "three"))
 )
+
+##take the mean of each variable in the dataframe#
+mean(pull(hw1_df, norm_samp))
+mean(pull(hw1_df, vec_logical))
+mean(pull(hw1_df, vec_char))
+mean(pull(hw1_df, vec_factor))
+
+##you are able to take the mean for norm_samp and vec_logical, however you are unable to take the mean for vec_char and vec_factor# 
+eval = FALSE
+
+as.numeric(pull(hw1_df, vec_logical))
+as.numeric(pull(hw1_df, vec_char))
+as.numeric(pull(hw1_df, vec_factor))
+##you cannot convert characters into numeric, which is why the the character variable resulted in "NA" conversion and thus you cannot take the mean. However, for the logical and factor variables it was able to convert into numeric values. For the logical variable it was able to convert True into 1 and False into 0, and converted the different factor levels into numbers ("one" converted to 1, "two" converted to 3, "three" converted to 2) and thus you are now able to take the mean. 
+```
+
+
