@@ -2,7 +2,7 @@
 title: "p8105_hw1_bg2645"
 author: "Bing Bing Guo"
 date: "9/18/2019"
-output: html_document
+output: github_document
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
