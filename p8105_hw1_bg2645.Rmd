@@ -59,7 +59,7 @@ plot_df = tibble(
 )
 
 ```
-*There were 500 observations `r nrow(plot_df)` and 5 variables `r ncol(plot_df)` in the dataset 
+*There were `r nrow(plot_df)` and `r ncol(plot_df)` in the dataset 
 *The mean of the sample is `r mean(pull(plot_df, x))`
 *The median of the sample is `r median(pull(plot_df, x))`
 *The standard deviation of the sample is `r sd(pull(plot_df, x))`
