@@ -10,10 +10,12 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ``` 
 
-**Problem 1**
+## Problem 1
+
+**chunk 1**
 ```{r}
 
-##create dataframe containing 4 variables# 
+#create dataframe containing 4 variables# 
 
 hw1_df = tibble(
   norm_samp = rnorm(8),
@@ -22,7 +24,7 @@ hw1_df = tibble(
   vec_factor = factor(c("one", "one", "two", "two","two", "three", "three", "three"))
 )
 
-##take the mean of each variable in the dataframe#
+#take the mean of each variable in the dataframe#
 mean(pull(hw1_df, norm_samp))
 mean(pull(hw1_df, vec_logical))
 mean(pull(hw1_df, vec_char))
@@ -39,6 +41,7 @@ as.numeric(pull(hw1_df, vec_factor))
 ```
 * You cannot convert characters into numeric, which is why the the character variable resulted in "NA" conversion and thus you cannot take the mean. However, for the logical and factor variables it was able to convert into numeric values. For the logical variable it was able to convert True into 1 and False into 0, and converted the different factor levels into numbers ("one" converted to 1, "two" converted to 3, "three" converted to 2) and thus you are now able to take the mean. 
 
+**chunk 2**
 ```{r} 
 
 as.numeric(pull(hw1_df, vec_logical))*(pull(hw1_df, norm_samp))
@@ -49,7 +52,7 @@ as.numeric(as.factor(pull(hw1_df, vec_logical)))*(pull(hw1_df, norm_samp))
 
 ```               
 
-**Problem 2**
+## Problem 2
 ```{r} 
 
 # create dataframe #
@@ -71,7 +74,7 @@ plot_df = tibble(
 * The proportion of cases for which x+y>1 is `r mean(pull(plot_df, vec_logical_2))`
 
 ```{r} 
-##create a scatter plot of y vs x, color logical variable # 
+#create a scatter plot of y vs x, color logical variable # 
 
 ggplot(plot_df, aes(y = y, x = x, color=vec_logical_2)) + geom_point()
 ggsave("scatterplot1.pdf", plot = last_plot(), height = 4, width = 6)
