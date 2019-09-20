@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ``` 
 
-Problem 1
+**Problem 1**
 ```{r}
 
 ##create dataframe containing 4 variables# 
@@ -27,17 +27,19 @@ mean(pull(hw1_df, norm_samp))
 mean(pull(hw1_df, vec_logical))
 mean(pull(hw1_df, vec_char))
 mean(pull(hw1_df, vec_factor))
+```
+* You are able to take the mean for norm_samp and vec_logical, however you are unable to take the mean for vec_char and vec_factor, as the values are "NA"
 
-##you are able to take the mean for norm_samp and vec_logical, however you are unable to take the mean for vec_char and vec_factor# 
 
+```{r, eval = FALSE}
 
 as.numeric(pull(hw1_df, vec_logical))
 as.numeric(pull(hw1_df, vec_char))
 as.numeric(pull(hw1_df, vec_factor))
-##You cannot convert characters into numeric, which is why the the character variable resulted in "NA" conversion and thus you cannot take the mean. However, for the logical and factor variables it was able to convert into numeric values. For the logical variable it was able to convert True into 1 and False into 0, and converted the different factor levels into numbers ("one" converted to 1, "two" converted to 3, "three" converted to 2) and thus you are now able to take the mean. 
 ```
+* You cannot convert characters into numeric, which is why the the character variable resulted in "NA" conversion and thus you cannot take the mean. However, for the logical and factor variables it was able to convert into numeric values. For the logical variable it was able to convert True into 1 and False into 0, and converted the different factor levels into numbers ("one" converted to 1, "two" converted to 3, "three" converted to 2) and thus you are now able to take the mean. 
 
-```{r, eval = FALSE} 
+```{r} 
 
 as.numeric(pull(hw1_df, vec_logical))*(pull(hw1_df, norm_samp))
 
@@ -47,7 +49,7 @@ as.numeric(as.factor(pull(hw1_df, vec_logical)))*(pull(hw1_df, norm_samp))
 
 ```               
 
-Problem 2 
+**Problem 2**
 ```{r} 
 
 # create dataframe #
@@ -62,11 +64,11 @@ plot_df = tibble(
 )
 
 ```
-*There were `r nrow(plot_df)` and `r ncol(plot_df)` in the dataset 
-*The mean of the sample is `r mean(pull(plot_df, x))`
-*The median of the sample is `r median(pull(plot_df, x))`
-*The standard deviation of the sample is `r sd(pull(plot_df, x))`
-*The proportion of cases for which x+y>1 is `r mean(pull(plot_df, vec_logical_2))`
+* There were `r nrow(plot_df)` and `r ncol(plot_df)` in the dataset 
+* The mean of the sample is `r mean(pull(plot_df, x))`
+* The median of the sample is `r median(pull(plot_df, x))`
+* The standard deviation of the sample is `r sd(pull(plot_df, x))`
+* The proportion of cases for which x+y>1 is `r mean(pull(plot_df, vec_logical_2))`
 
 ```{r} 
 ##create a scatter plot of y vs x, color logical variable # 
@@ -81,4 +83,4 @@ ggplot(plot_df, aes(y = y, x = x, color=vec_numeric_2)) + geom_point()
 ggplot(plot_df, aes(y = y, x = x, color=vec_factor_2)) + geom_point()
 ```
 
-Plot 1 and plot 3 have the same color scales as they are both coloring True or False values, however plot 2 has a different color scale as it is now coloring a numeric variable and thus coloring based on 0 or 1, which is why there are only two colors shown. This is becasue the numeric variable was created by coercing the logical vector, thus turning the Yes and No into 0 and 1, respectively. Plot 3 has the same color scales as plot 1, since the factor vector was created by coercing the logical vector and thus for both variables the values are still in True/False. 
+* Plot 1 and plot 3 have the same color scales as they are both coloring binary True or False values, however plot 2 has a different color scale as it is now coloring a numeric variable and thus coloring based on 0 or 1, however they are still binary values which is why there are only two colors shown. This is becasue the numeric variable was created by coercing the logical vector, thus turning the Yes and No into 0 and 1, respectively. Plot 3 has the same color scales as plot 1, since the factor vector was created by coercing the logical vector and thus for both variables the values are still in True/False. 
